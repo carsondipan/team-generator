@@ -1,0 +1,14 @@
+{
+  "_comment": "Instructor provided package.json",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
