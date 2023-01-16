@@ -4,13 +4,13 @@ class Engineer extends Employee {
     constructor (name, id, email, gitHub) {
         super(name, id, email);
         this.gitHub = gitHub;
-    }
+    };
     getRole(){
         return 'Engineer';
-    }
-    getGithub(){
+    };
+    getGitHub(){
         return this.gitHub;
-    }
+    };
 }
 
 module.exports = Engineer;
