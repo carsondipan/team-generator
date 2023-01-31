@@ -82,27 +82,29 @@ const internQuestions = [
 
 const chooseEmployeeType = async ({ type }) => {
     let response;
-    switch(type) {
+    switch (type) {
         case 'Engineer': {
             const response = await prompt(engineerQuestions);
             const { name, id, email, gitHub } = response;
-            const engineer = new Engineer( name, id, email, gitHub );
+            new engineer = new Engineer(name, id, email, gitHub);
             teamMembers.push(engineer);
             break;
         }
         case 'Intern': {
             const response = await prompt(internQuestions);
             const { name, id, email, school } = response;
-            const intern = new Intern( name, id, email, school );
+            new intern = new Intern(name, id, email, school);
             teamMembers.push(intern);
             break;
+
         }
         case 'Manager': {
             const response = await prompt(managerQuestions);
             const { name, id, email, officeNumber } = response;
-            const manager = new Manager( name, id, email, officeNumber );
+            new manager = new Manager(name, id, email, officeNumber);
             teamMembers.push(manager);
             break;
+
         }
     }
 };
@@ -119,7 +121,7 @@ const addMoreEmployees = ({ addMore }) => {
         console.log('CONTINUE');
     } else {
         const template = pageTemplate(teamMembers);
-        fs.writeFileSync('./dist/team.html', template);
+        fs.writeFileSync('./dist/team.html', )
     }
 };
 
@@ -130,15 +132,23 @@ prompt(managerQuestions)
     })
     .then(confirmMoreEmployees)
     .then(addMoreEmployees)
+    .then(({ addMore }) => {
+        if (addMore) {
+            console.log('CONTINUE');
+        } else {
+            console.log('Write File');
+        }
+    })
     .then(() => {
         return prompt({
             type: 'rawlist',
-            message: 'What kind of employee do you want to add?',
+            message: 'What type of employee do you want to add?',
             choices: [
-                'Engineer',
                 'Intern',
+                'Engineer',
                 'Manager',
             ],
+            name: 'type',
         })
     })
     .then(chooseEmployeeType)
