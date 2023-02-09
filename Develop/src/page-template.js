@@ -1,12 +1,49 @@
 // create the team
 const generateTeamMembers = (team) => {
-
+  return team.map(member => {
+    if (member.getRole() === 'Engineer') {
+      return `
+        <article>
+        <h2>${member.getRole()}</h2>
+        <ul>
+          <li>ID: ${member.getId()}2</li>
+          <li>Email: ${member.getEmail()}</li>
+          <li>GitHub: <a href="#github">${member.getGitHub()}</a></li>
+        </ul>
+      </article>
+      `
+    }
+    if (member.getRole() === 'Intern') {
+      return `
+        <article>
+        <h2>${member.getRole()}</h2>
+        <ul>
+          <li>ID: ${member.getId()}2</li>
+          <li>Email: ${member.getEmail()}</li>
+          <li>School: ${member.getSchool()}</li>
+        </ul>
+      </article>
+      `
+    }
+    if (member.getRole() === 'Manager') {
+      return `
+        <article>
+        <h2>${member.getRole()}</h2>
+        <ul>
+          <li>ID: ${member.getId()}2</li>
+          <li>Email: ${member.getEmail()}</li>
+          <li>Office:${member.getOfficeNumber()}</li>
+        </ul>
+      </article>
+      `
+    }
+  }).join('');
 };
 
 // export function to generate entire page
 module.exports = (team) => {
-    // TODO: MAIN HTML TEMPLATE LITERAL GOES HERE
-    `
+  // TODO: MAIN HTML TEMPLATE LITERAL GOES HERE
+  return `
     <!-- Instructor provided template -->
 <!DOCTYPE html>
 <html lang="en">
@@ -47,30 +84,6 @@ module.exports = (team) => {
     <h1>My Team</h1>
   </header>
   <main>
-    <article>
-      <h2>Manager</h2>
-      <ul>
-        <li>ID: 1</li>
-        <li>Email: manager@email.com</li>
-        <li>Office Number: 123</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Engineer</h2>
-      <ul>
-        <li>ID: 2</li>
-        <li>Email: engineer@email.com</li>
-        <li>GitHub: <a href="#github">person</a></li>
-      </ul>
-    </article>
-    <article>
-      <h2>Intern</h2>
-      <ul>
-        <li>ID: 3</li>
-        <li>Email: intern@email.com</li>
-        <li>School: FUN University</li>
-      </ul>
-    </article>
     ${generateTeamMembers(team)}
   </main>
   <footer>
